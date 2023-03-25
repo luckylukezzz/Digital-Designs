@@ -40,13 +40,13 @@ end Mux_8_to_1;
 
 architecture Behavioral of Mux_8_to_1 is
 
-component Decoder_3_to_8
-    Port ( I : in STD_LOGIC_VECTOR (2 downto 0);
-             EN : in STD_LOGIC;
-             Y : out STD_LOGIC_VECTOR (7 downto 0));
- end component;
+    component Decoder_3_to_8
+        Port ( I : in STD_LOGIC_VECTOR (2 downto 0);
+                EN : in STD_LOGIC;
+                Y : out STD_LOGIC_VECTOR (7 downto 0));
+    end component;
  
- signal Y0 : STD_LOGIC_VECTOR (7 downto 0);
+    signal Y0 : STD_LOGIC_VECTOR (7 downto 0);
 
 
 begin
