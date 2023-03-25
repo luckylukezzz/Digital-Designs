@@ -37,50 +37,50 @@ end TB_Decoder_3_to_8;
 
 architecture Behavioral of TB_Decoder_3_to_8 is
 
-COMPONENT Decoder_3_to_8
-Port ( I : in STD_LOGIC_VECTOR (2 downto 0);
- EN : in STD_LOGIC;
- Y : out STD_LOGIC_VECTOR (7 downto 0));
- END COMPONENT;
+  COMPONENT Decoder_3_to_8
+    Port ( I : in STD_LOGIC_VECTOR (2 downto 0);
+        EN : in STD_LOGIC;
+        Y : out STD_LOGIC_VECTOR (7 downto 0));
+  END COMPONENT;
  
- signal I :  STD_LOGIC_VECTOR (2 downto 0);
+  signal I :  STD_LOGIC_VECTOR (2 downto 0);
   signal Y : STD_LOGIC_VECTOR (7 downto 0);
   signal EN : STD_LOGIC;
 
 begin
 
-UUT: Decoder_3_to_8 PORT MAP(
+  UUT: Decoder_3_to_8 PORT MAP(
 
-I=>I,
-Y =>Y,
-EN => EN
+    I=>I,
+    Y =>Y,
+    EN => EN
 
- );
+  );
 
-process
- begin
- I(0) <= '1'; -- set initial values
- I(1) <= '1';
- I(2)<= '1';
- EN<='1';
- WAIT FOR 100 ns; -- after 100 ns change inputs
- I(0) <= '0'; -- set initial values
- I(1) <= '0';
- I(2)<= '1';
- WAIT FOR 100 ns; --change again
- I(0) <= '0'; -- set initial values
- I(1) <= '1';
- I(2)<= '0';
- WAIT FOR 100 ns; --change again
-  I(0) <= '1'; -- set initial values
- I(1) <= '1';
- I(2)<= '0';
- WAIT FOR 100 ns; --change again
-  I(0) <= '0'; -- set initial values
- I(1) <= '1';
- I(2)<= '1';
+  process
+    begin
+      I(0) <= '1';
+      I(1) <= '1';
+      I(2)<= '1';
+      EN<='1';
+    WAIT FOR 100 ns; 
+      I(0) <= '0';
+      I(1) <= '0';
+      I(2)<= '1';
+    WAIT FOR 100 ns;
+      I(0) <= '0';
+      I(1) <= '1';
+      I(2)<= '0';
+    WAIT FOR 100 ns;
+      I(0) <= '1'; 
+      I(1) <= '1';
+      I(2)<= '0';
+    WAIT FOR 100 ns;
+      I(0) <= '0'; 
+      I(1) <= '1';
+      I(2)<= '1';
 
-wait;
+    wait;
 
-end process;
+  end process;
 end Behavioral;
