@@ -40,7 +40,9 @@ architecture Behavioral of Slow_Clk is
 signal count : integer := 1;
 signal clk_status : std_logic := '0';
 begin
+    
     process (Clk_in) begin
+        Clk_out <= clk_status;
         if (rising_edge(Clk_in)) then
             count <= count + 1;
             if(count = 10) then
@@ -50,5 +52,5 @@ begin
             end if;
          end if;
     end process;
-
+    
 end Behavioral;

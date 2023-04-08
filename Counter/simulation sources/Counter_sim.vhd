@@ -31,6 +31,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+
 entity Counter_sim is
 --  Port ( );
 end Counter_sim;
@@ -54,21 +55,35 @@ begin
         Res=>Res,
         Clk=>Clk
   );
-process
-        begin
-            Res <= '0';
-            Res <= '1';
-            Dir <= '1';
-            Clk <='0';
-            Clk <='1';
-            WAIT FOR 100 ns;
-            Dir <= '0';
-            WAIT FOR 100 ns;
-           
-            Dir <= '1';
-            WAIT FOR 100 ns;
-           
-            Dir <= '0';
-            WAIT;
+
+  process
+      begin
+        Dir <= '0';
+        Res <= '1';
+        for i in 1 to 20 loop
+          Clk <= '0';
+          WAIT FOR 2 ns;
+          Clk <= '1';
+          WAIT FOR 2 ns;
+        end loop;
+        WAIT FOR 50 ns;
+        Res <= '0';
+        for i in 1 to 100 loop
+          Clk <= '0';
+          WAIT FOR 2 ns;
+          Clk <= '1';
+          WAIT FOR 2 ns;
+        end loop;
+
+        WAIT FOR 50 ns;
+        Dir <= '1';
+        for i in 1 to 100 loop
+            Clk <= '0';
+            WAIT FOR 2 ns;
+            Clk <= '1';
+            WAIT FOR 2 ns;
+        end loop;
+    WAIT; 
+      
 end process;
 end Behavioral;
