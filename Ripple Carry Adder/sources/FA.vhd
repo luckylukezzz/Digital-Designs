@@ -66,7 +66,7 @@ begin
 
 
 S<=A XOR B XOR C_in;
-C_out<=(A AND B) OR C_in;
+C_out<=(A and B) or ((A xor B) and C_in);
 
 
 end Behavioral;
